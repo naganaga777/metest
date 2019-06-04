@@ -43,6 +43,7 @@
     <ClCompile Include="Chapter2Test.cpp" />
     <ClCompile Include="Chapter3Test.cpp" />
     <ClCompile Include="Chapter4Test.cpp" />
+    <ClCompile Include="Chapter5Test.cpp" />
     <ClCompile Include="CrtMemDiffChecker.cpp" />
     <ClCompile Include="CrtMemState.cpp" />
     <ClCompile Include="StringEditCStyle.cpp" />
