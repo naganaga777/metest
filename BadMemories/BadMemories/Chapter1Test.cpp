@@ -7,7 +7,7 @@
 /// Chapter1-1
 /// 文字列、HelloWorld!をHelloJapan?に変換する。
 /// 本テストをパスするコードを実装する。
-/// 変換処理はHelloWorldToHelloJapan()に実装すること。
+/// 変換処理はHelloWorldToHelloJapan()に実装すること。gsgmgms
 /// HelloWorldToHelloJapanのI/F（引数・戻り）は適宜変更してよい。
 /// 下記テストコードの指定範囲は適宜変更すること。
 /// Inputの文字列がHelloWorld!であることは前提としてよい。
