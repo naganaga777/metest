@@ -4,6 +4,7 @@
 
 
 
+
 /// Chapter1-1
 /// 文字列、HelloWorld!をHelloJapan?に変換する。
 /// 本テストをパスするコードを実装する。
@@ -15,6 +16,7 @@
 TEST(Chapter1, _1_EditStringC) {
 	char* helloworld = nullptr;
 	{//ここから変更可
+		helloworld = "HelloWorld!";
 		HelloWorldToHelloJapan(helloworld);
 	}//ここまで変更可
 
