@@ -16,8 +16,9 @@
 TEST(Chapter1, _1_EditStringC) {
 	char* helloworld = nullptr;
 	{//ここから変更可
-		helloworld = "HelloWorld!";
-		HelloWorldToHelloJapan(helloworld);
+		char inStr[] = "HelloWorld!";//配列の先頭ポインタを渡すと、例外は発生しない
+		//char* inStr = "HelloWorld!";//ポインタだとアクセス違反が発生する
+		helloworld = HelloWorldToHelloJapan(inStr);
 	}//ここまで変更可
 
 	EXPECT_EQ(helloworld, "HelloJapan?");
