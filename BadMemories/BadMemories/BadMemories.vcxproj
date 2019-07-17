@@ -39,7 +39,9 @@
     <ClInclude Include="StringEditCStyle.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Chapter1Test.cpp" />
+    <ClCompile Include="Chapter1Test.cpp">
+      <AssemblerOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">AssemblyCode</AssemblerOutput>
+    </ClCompile>
     <ClCompile Include="Chapter2Test.cpp" />
     <ClCompile Include="Chapter3Test.cpp" />
     <ClCompile Include="Chapter4Test.cpp" />
