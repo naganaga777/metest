@@ -3,12 +3,12 @@
 #include "StringEditCStyle.h"
 
 /// <summary>
-/// 
+/// 文字列を置換するメソッド
 /// </summary>
-/// <param name="srcChar"></param>
-/// <param name="desChar"></param>
-/// <param name="startIndex"></param>
-/// <param name="endIndex"></param>
+/// <param name="srcChar">書き換え元の文字列</param>
+/// <param name="desChar">置換する文字列</param>
+/// <param name="startIndex">置換したい文字列の最初のインデックス</param>
+/// <param name="endIndex">置換したい文字列の最後のインデックス</param>
 void Replace(char srcChar[], char desChar[], int startIndex, int endIndex)
 {
 	int count = 0;
@@ -55,11 +55,6 @@ char* HelloWorldToHelloJapan(char ioString[])
 /// <param name="ioString">変換前後の文字列</param>
 char* HelloWorldToByeWorld(char* ioString)
 {
-	char tmp[] = "Bye";
-	int startIndex = 0;
-	int endIndex = 10;
-	Replace(ioString, tmp, startIndex, endIndex);
-	return ioString;
 }
 
 /// <summary>
