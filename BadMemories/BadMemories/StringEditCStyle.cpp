@@ -18,8 +18,6 @@ void Replace(char srcChar[], char desChar[], int startIndex, int endIndex)
 	{
 		if ('\0' == desChar[count])
 		{
-			//OffsetCharArray(srcChar, endIndex, currentIndex);
-			//Erase(srcChar, count, endIndex);
 			Erase(srcChar, count, endIndex);
 			break;
 		}

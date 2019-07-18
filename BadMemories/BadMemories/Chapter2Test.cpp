@@ -1,6 +1,7 @@
 #include "pch.h"
-
+#include "StringChapter2.h"
 #include <string>
+#include <vector>
 using namespace std;
 
 /// Chapter2-1
@@ -13,9 +14,11 @@ using namespace std;
 TEST(Chapter2, _1_EditStringCPP) {
 	string expect;
 	{//‚±‚±‚©‚ç•ÏX‰Â
+		StringChapter2 stringChapter2;
+		expect = stringChapter2.Replace("Japan?", 5, 10).GetString();
 	}//‚±‚±‚Ü‚Å•ÏX‰Â
 
-	EXPECT_EQ(expect.c_str(), "HelloJapan?");
+	EXPECT_STREQ(expect.c_str(), "HelloJapan?");
 	const char* temp = "HelloWorld!";
 	EXPECT_EQ(temp[5], 'W');
 }
