@@ -65,10 +65,11 @@ TEST(Chapter1, _2_EditStringC) {
 TEST(Chapter1, _3_EditStringC) {
 	char* helloworld = nullptr;
 	{//Ç±Ç±Ç©ÇÁïœçXâ¬
-		HelloWorldToHelloJapan(helloworld);
+		char inStr[] = "HelloWorld!";
+		helloworld = HelloWorldToHelloWorld(inStr);
 	}//Ç±Ç±Ç‹Ç≈ïœçXâ¬
 
-	EXPECT_EQ(helloworld, "Hello!World!");
+	EXPECT_STREQ(helloworld, "Hello!World!");
 	const char* temp = "HelloWorld!";
 	EXPECT_EQ(temp[5], 'W');
 }

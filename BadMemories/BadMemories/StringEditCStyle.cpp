@@ -58,6 +58,7 @@ void Erase(char srcChar[], int startIndex, int endIndex)
 	}
 }
 
+
 /// <summary>
 /// 文字列配列の特定のインデックスを削除
 /// </summary>
@@ -69,6 +70,44 @@ void Erase(char srcChar[], int index)
 	while ('\0' != srcChar[currentIndex++])
 	{
 		srcChar[currentIndex - 1] = srcChar[currentIndex];
+	}
+}
+
+/// <summary>
+/// 文字列配列に文字を挿入する関数
+/// </summary>
+/// <param name="srcChar">挿入先の文字列配列</param>
+/// <param name="indeX">挿入するインデクス</param>
+/// <param name="insertChar">挿入する文字</param>
+/// <returns>文字列配列の先頭ポインタ</returns>
+char* Insert(char srcChar[], int indeX, char insertChar)
+{
+	char retCharArray[256] ="";
+	Copy(srcChar, retCharArray);//コピー
+
+	retCharArray[indeX] = insertChar;
+	int currentIndex = indeX;
+	while ('\0' != srcChar[currentIndex])
+	{
+		currentIndex++;
+		retCharArray[currentIndex] = srcChar[currentIndex - 1];
+	}
+	return retCharArray;
+}
+
+/// <summary>
+/// 文字列配列をコピーする関数
+/// DeepCopyで参照先ごと変える
+/// </summary>
+/// <param name="srcChar">コピー元の文字列配列</param>
+/// <param name="desChar">コピー先の文字列配列（out）</param>
+void Copy(char srcChar[], char desChar[])
+{
+	int currentIndex = 0;
+	while ('\0' != srcChar[currentIndex])
+	{
+		desChar[currentIndex]= srcChar[currentIndex];
+		currentIndex++;
 	}
 }
 
@@ -110,7 +149,9 @@ char* HelloWorldToByeWorld(char ioString[])
 /// Cの範囲で実装すること。C標準ライブラリ・Win32APIは使用可。
 /// </summary>
 /// <param name="ioString">変換前後の文字列</param>
-void HelloWorldToHelloWorld(char* ioString)
+char* HelloWorldToHelloWorld(char ioString[])
 {
-
+	char insertChar = '!';
+	int insertIndex = 5;
+	return Insert(ioString, insertIndex, insertChar);
 }
