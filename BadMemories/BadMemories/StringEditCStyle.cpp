@@ -11,15 +11,24 @@
 /// <param name="endIndex">置換したい文字列の最後のインデックス</param>
 void Replace(char srcChar[], char desChar[], int startIndex, int endIndex)
 {
+
 	int count = 0;
-	for (int index = startIndex; index <= endIndex; ++index)
+	desChar[sizeof(desChar) - 1] = '\0';
+	for (int currentIndex = startIndex; currentIndex <= endIndex; ++currentIndex)
 	{
-		srcChar[index] = desChar[count];
+		if ('\0' == desChar[count])
+		{
+			//OffsetCharArray(srcChar, endIndex, currentIndex);
+			//Erase(srcChar, count, endIndex);
+			Erase(srcChar, count, endIndex);
+			break;
+		}
+		srcChar[currentIndex] = desChar[count];
 		count++;
 	}
 	/*[メモ２]
 	char inStr[] = "HelloWorld!";//配列の先頭ポインタを渡すと、例外は発生しない
-	char inStr = "HelloWorld!";//ポインタだとアクセス違反が発生する 
+	char inStr = "HelloWorld!";//ポインタだとアクセス違反が発生する
 	[原因]
 	ダブルクォーテーション""で囲まれた文字列を文字列リテラルという。
 	文字列リテラルは、プログラムの実行開始時に特殊な領域に文字列配列として確保される。
@@ -33,6 +42,38 @@ void Replace(char srcChar[], char desChar[], int startIndex, int endIndex)
 }
 
 /// <summary>
+/// 文字列配列の特定範囲のインデックスを削除
+/// </summary>
+/// <param name="srcChar">文字列配列</param>
+/// <param name="startIndex">削除対象の最初のインデックス</param>
+/// <param name="endIndex">削除対象の最後のインデクス</param>
+void Erase(char srcChar[], int startIndex, int endIndex)
+{
+	int currentIndex = startIndex;
+	int eraseIndex = startIndex;
+	while (endIndex >= currentIndex)
+	{
+		Erase(srcChar, eraseIndex);
+		currentIndex++;
+	}
+}
+
+/// <summary>
+/// 文字列配列の特定のインデックスを削除
+/// </summary>
+/// <param name="srcChar">文字列配列</param>
+/// <param name="index">削除対象のインデックス</param>
+void Erase(char srcChar[], int index)
+{
+	int currentIndex = index;
+	while ('\0' != srcChar[currentIndex++])
+	{
+		srcChar[currentIndex - 1] = srcChar[currentIndex];
+	}
+}
+
+
+/// <summary>
 /// 文字列、HelloWorld!をHelloJapan?に変換する。
 /// Inputの文字列がHelloWorld!であることは前提としてよい。
 /// Cの範囲で実装すること。C標準ライブラリ・Win32APIは使用可。
@@ -40,7 +81,7 @@ void Replace(char srcChar[], char desChar[], int startIndex, int endIndex)
 /// <param name="ioString">変換前後の文字列</param>
 char* HelloWorldToHelloJapan(char ioString[])
 {
-	char tmp[] = "Japan?";
+	char tmp[256] = "Japan?";
 	int startIndex = 5;
 	int endIndex = 10;
 	Replace(ioString, tmp, startIndex, endIndex);
@@ -53,8 +94,14 @@ char* HelloWorldToHelloJapan(char ioString[])
 /// Cの範囲で実装すること。C標準ライブラリ・Win32APIは使用可。
 /// </summary>
 /// <param name="ioString">変換前後の文字列</param>
-char* HelloWorldToByeWorld(char* ioString)
+char* HelloWorldToByeWorld(char ioString[])
 {
+	//char byeChar[] = "Bye"; ⇒　HelloWorldToByeWorldを抜けたときにStack around the variable 'xxx' was corrupted.の例外が発生。
+	char byeChar[10] = "Bye";
+	int startIndex = 0;
+	int endIndex = 4;
+	Replace(ioString, byeChar, startIndex, endIndex);
+	return ioString;
 }
 
 /// <summary>

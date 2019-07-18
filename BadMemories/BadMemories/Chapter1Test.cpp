@@ -29,8 +29,6 @@ TEST(Chapter1, _1_EditStringC) {
 	/*
 	[メモ１]
 	EXPECT_EQはポインタの比較。「アドレス」と「型」
-
-
 	*/
 }
 
@@ -46,10 +44,12 @@ TEST(Chapter1, _1_EditStringC) {
 TEST(Chapter1, _2_EditStringC) {
 	char* helloworld = nullptr;
 	{//ここから変更可
-		HelloWorldToHelloJapan(helloworld);
+		char inStr[] = "HelloWorld!";
+		helloworld = HelloWorldToByeWorld(inStr);
 	}//ここまで変更可
 
-	EXPECT_EQ(helloworld, "ByeWorld!");
+	//EXPECT_EQ(helloworld, "ByeWorld!");
+	EXPECT_STREQ(helloworld, "ByeWorld!");
 	const char* temp = "HelloWorld!";
 	EXPECT_EQ(temp[5], 'W');
 }
