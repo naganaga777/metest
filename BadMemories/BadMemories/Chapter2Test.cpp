@@ -14,8 +14,8 @@ using namespace std;
 TEST(Chapter2, _1_EditStringCPP) {
 	string expect;
 	{//‚±‚±‚©‚ç•ÏX‰Â
-		StringChapter2 stringChapter2;
-		expect = stringChapter2.Replace("Japan?", 5, 10).GetString();
+		StringChapter2 HellowWorld;
+		expect = HellowWorld.Replace("Japan?", 5, 10).GetString();
 	}//‚±‚±‚Ü‚Å•ÏX‰Â
 
 	EXPECT_STREQ(expect.c_str(), "HelloJapan?");
